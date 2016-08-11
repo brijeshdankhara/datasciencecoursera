@@ -1,4 +1,6 @@
-r_Data = function (fname, folder) {
+# Function for reading subject_train, X_train, y_train from the folder 'train'
+# and labelling and extracting the data for mean and standard deviation. 
+  r_Data = function (fname, folder) {
   path = file.path(folder, paste0("y_", fname, ".txt"))
   y_data = read.table(path, header=FALSE, col.names = c("ActiviytID"))
   
@@ -40,7 +42,6 @@ mergeDataset = function () {
   dataset
 }
 
-# Part 3 & Part 4
 # Reading the activity labels and creating a column for activity labels 
 activityLabels = function (dataset) {
   activity_labels = read.table("activity_labels.txt", header = FALSE, as.is=TRUE, col.names = c("ActivityID", "ActivityName"))
@@ -54,7 +55,6 @@ merge_label_data = function () {
   activityLabels(mergeDataset())
 }
 
-# Part 5
 # Creating a second, independent tidy data set with the average of each variable for each activity and each subject. 
 tidyData = function(merge_label_data) {
   library(reshape2)
